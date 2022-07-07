@@ -10,7 +10,7 @@ socket.on('disconnect', function () {
     console.log('Disconnected from Server')
 });
 
-function onclicks() {
+function onclick() {
     // get the value of the input fields
     let name = document.getElementById('name').value;
     let email = document.getElementById('email').value;
