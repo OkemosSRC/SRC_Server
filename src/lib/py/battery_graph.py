@@ -31,7 +31,7 @@ time = [x[0] for x in srs_bat]
 temp = [x[1] for x in srs_bat]
 voltage = [x[2] for x in srs_bat]
 for i in range(len(time)):
-    if i % 30 == 0:
+    if i % 1 == 0:
         time_sample.append(datetime.fromtimestamp(round(int(time[i]) / 1000)))
         temp_sample.append(float(temp[i]))
         voltage_sample.append(float(voltage[i]))

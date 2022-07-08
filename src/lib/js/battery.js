@@ -26,10 +26,10 @@ function battery(socket) {
                 let battery_temp = data.d.temp || -1;
                 let battery_voltage = data.d.voltage || -1;
                 let battery_time = data.d.time || new Date();
-                console.log("saved to database");
+                // console.log("saved to database");
                 // if data.t is not empty, then print data.t
                 if (data.t) {
-                    console.log(data.t, "Received from client");
+                    // console.log(data.t, "Received from client");
                 }
                 db.serialize(() => {
                     db.run(`INSERT INTO battery (battery_temp, battery_voltage, battery_time)
@@ -67,6 +67,6 @@ function battery(socket) {
 
 
 module.exports = {
-    db_init: db_init,
-    battery: battery
+    db_init_battery: db_init,
+    battery_handler: battery
 }

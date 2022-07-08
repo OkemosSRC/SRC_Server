@@ -3,20 +3,23 @@ const socketIO = require('socket.io');
 const http = require('http')
 const port = process.env.PORT || 8080 // setting the port
 let app = express();
-let {battery_graph} = require('./lib/graphs');
-let {battery, db_init} = require('./lib/battery');
+let {battery_graph} = require('./lib/js/graphs');
+let {battery_handler, db_init_battery} = require('./lib/js/battery');
+let {speed_handler, db_init_speed} = require('./lib/js/speed');
 let server = http.createServer(app);
 app.use(express.static('public')) // using the public folder
-let io = socketIO(server, {serveClient: false}); // using socket.io
-db_init();
+let io = socketIO(server); // using socket.io
+db_init_battery();
+db_init_speed()
 
-setInterval(battery_graph, 60000); // calling the battery_graph function every minute
+setInterval(battery_graph, 6000); // calling the battery_graph function every minute
 
 
 // make a connection with the user from server side
 io.on('connection', (socket) => {
     console.log('a user connected');
-    battery(socket);
+    battery_handler(socket);
+    speed_handler(socket);
     socket.on('disconnect', () => {
         console.log('disconnected from user');
     });

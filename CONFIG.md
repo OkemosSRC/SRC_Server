@@ -15,6 +15,16 @@
 | 1       | `submit`   | Battery Info submit          | Client |
 | 2       | `error`    | Battery info submit invalid  | Server |
 | 3       | `success`  | Battery info submit success  | Server |
-| 4       | `fail`     | Battery info submit failed   | Server |
+| 4       | `failed`   | Battery info submit failed   | Server |
 
 
+### EVENT `speed_data`
+
+| OP CODE | EVENT NAME      | DESCRIPTION               | SOURCE |
+|---------|-----------------|---------------------------|--------|
+| 1       | `submit`        | Speed Info submit         | Client |
+| 2       | `error`         | Speed info submit invalid | Server |
+| 3       | `success`       | Speed info submit success | Server |
+| 4       | `fail`          | Speed info submit failed  | Server |
+| 5       | `get`           | get speed info            | Client |
+| 6       | `current_speed` | Current speed info        | Server |

@@ -11,6 +11,19 @@ socket.on('disconnect', function () {
 });
 
 
-socket.on('speed',function(data){
-    console.log(data);
+socket.on('speed_data', function (data) {
+    if (data.op === 6) {
+        console.log(data.d.speed)
+        let value = data.d.speed
+        gauge.set(value); // set actual value
+        document.getElementById("speed_val").innerHTML = value + " MPH";
+    }
 })
+
+setInterval(function () {
+    socket.emit('speed_data', {
+        op: 5
+    })
+}, 100)
+
+

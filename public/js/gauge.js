@@ -29,11 +29,11 @@ var opts = {
         divLength: 0.5,
         divColor: "#333333",
         subDivisions: 5,
-        subWidth: 1,
-        subLength: 0.5,
-        subColor: "#666666"
+    subWidth: 1,
+    subLength: 0.5,
+    subColor: "#666666"
 
-    }
+}
 
 };
 var target = document.getElementById('speed'); // your canvas element
@@ -41,10 +41,13 @@ var gauge = new Gauge(target).setOptions(opts); // create sexy gauge!
 gauge.maxValue = 100; // set max gauge value
 gauge.setMinValue(0);  // Prefer setter over gauge.minValue = 0
 gauge.animationSpeed = 5; // set animation speed (32 is default value)
+gauge.set(0)
+/*
 setInterval(function () {
     // get random value between 0 and 70
     var value = Math.floor(Math.random() * 100);
     gauge.set(value); // set actual value
     document.getElementById("speed_val").innerHTML = value+" MPH";
 }, 500);
-gauge.set(60); // set actual value
+
+ */
