@@ -12,7 +12,7 @@ let io = socketIO(server); // using socket.io
 db_init_battery();
 db_init_speed()
 
-setInterval(battery_graph, 6000); // calling the battery_graph function every minute
+setInterval(battery_graph, 30000); // calling the battery_graph function every 30 seconds
 
 // make a connection with the user from server side
 io.on('connection', (socket) => {
