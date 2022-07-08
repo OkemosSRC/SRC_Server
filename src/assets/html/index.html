@@ -4,40 +4,35 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Socket Test</title>
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
     <script src="https://cdn.socket.io/4.5.0/socket.io.min.js"
             integrity="sha384-7EyYLQZgWBi67fBtVxw60/OWl1kjsfrPFcaU0pp0nAh+i8FD068QogUvg85Ewy1k"
             crossorigin="anonymous"></script>
     <script src="/js/index.js"></script>
+    <script src="https://bernii.github.io/gauge.js/dist/gauge.min.js"></script>
+    <script src="/socket.io/socket.io.js"></script>
 </head>
 <body>
 <div class="container">
-    <div class="row">
-        <div class="col-md-12">
-            <br>
-            <form onsubmit="onclick()">
-                <label for="name">Name</label>
-                <input type="text" class="form-control" id="name" placeholder="Enter name">
-                <br>
-                <label for="email">Email</label>
-                <input type="email" class="form-control" id="email" placeholder="Enter email">
-                <br>
-                <label for="message">Message</label>
-                <textarea class="form-control" id="message" rows="3"></textarea>
-                <br>
-                <button type="submit" class="btn btn-primary">Submit</button>
-            </form>
-        </div>
+    <div style="text-align: center">
+        <h1>Current Speed</h1>
+        <h2 id="speed_val">0 MPH</h2>
+        <br>
+        <br>
+        <canvas id="speed" width="800" height="400">
+        </canvas>
+        <br>
+        <br>
+        <a href="/battery" class="btn btn-secondary">Batteries</a>
     </div>
 </div>
-<div class="container">
-    <div id="messages" style="text-align: center">
-        <a href="/battery" class="btn btn-secondary">Battery</a>
-    </div>
-</div>
+<script src="/js/gauge.js">
+</script>
+</body>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2"
         crossorigin="anonymous"></script>
-</body>
+
 </html>
