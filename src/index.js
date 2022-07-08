@@ -10,7 +10,7 @@ app.use(express.static('public')) // using the public folder
 let io = socketIO(server, {serveClient: false}); // using socket.io
 db_init();
 
-setInterval(battery_graph, 5000); // calling the battery_graph function every 30000 milliseconds (30 seconds)
+setInterval(battery_graph, 60000); // calling the battery_graph function every minute
 
 
 // make a connection with the user from server side
