@@ -12,5 +12,7 @@ npm ci
 # Start the server
 npm start
 ```
-To set up a Cloudflare Tunnel, please follow the instructions on the [Cloudflare page](https://www.cloudflare.com/products/tunnel/).
+
+To set up a Cloudflare Tunnel, please follow the instructions on
+the [Cloudflare page](https://www.cloudflare.com/products/tunnel/).
 
