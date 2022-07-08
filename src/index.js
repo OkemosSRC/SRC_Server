@@ -8,10 +8,11 @@ let {battery, db_init} = require('./lib/battery');
 let server = http.createServer(app);
 app.use(express.static('public')) // using the public folder
 let io = socketIO(server, {serveClient: false}); // using socket.io
-
-setInterval(battery_graph,30000); // calling the battery_graph function every 30000 milliseconds (30 seconds)
-
 db_init();
+
+setInterval(battery_graph, 5000); // calling the battery_graph function every 30000 milliseconds (30 seconds)
+
+
 // make a connection with the user from server side
 io.on('connection', (socket) => {
     console.log('a user connected');

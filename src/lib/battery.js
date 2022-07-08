@@ -2,7 +2,7 @@ const sqlite3 = require('sqlite3');
 
 function db_init() {
     try {
-        let db = new sqlite3.Database('battery.db');
+        let db = new sqlite3.Database('db/battery.db');
         db.serialize(() => {
             db.run(`CREATE TABLE IF NOT EXISTS battery
                     (
