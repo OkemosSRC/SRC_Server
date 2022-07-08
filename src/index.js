@@ -14,7 +14,6 @@ db_init_speed()
 
 setInterval(battery_graph, 6000); // calling the battery_graph function every minute
 
-
 // make a connection with the user from server side
 io.on('connection', (socket) => {
     console.log('a user connected');
@@ -40,6 +39,3 @@ app.get('/battery', (req, res) => {
 server.listen(port, () => {
     console.log(`Server is running on port ${port}`)
 })
-
-
-

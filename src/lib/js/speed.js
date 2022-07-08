@@ -13,7 +13,7 @@ function db_init() {
         // insert data into the database
         db.serialize(() => {
             db.run(`INSERT INTO speed (speed, time)
-                    VALUES (?, ?)`, [5, new Date()]);
+                    VALUES (?, ?)`, [0, new Date()]);
         })
         db.close();
     } catch (err) {

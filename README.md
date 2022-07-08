@@ -10,9 +10,6 @@ This server requires Python 3.6 or higher and matplotlib.
 ```bash
 git clone https://github.com/OkemosSRC/SRC_Server.git
 cd SRC_Server
-# create virtual environment
-python3 -m venv venv
-source venv/bin/activate
 # Install dependencies
 pip install -r requirements.txt
 npm ci
@@ -24,11 +21,8 @@ npm start
 ```bash
 git clone https://github.com/OkemosSRC/SRC_Server.git
 cd SRC_Server
-# create virtual environment
-python -m venv venv
-. venv\Scripts\activate
 # Install dependencies
-pip install -r requirements.txt
+python -m pip install -r requirements.txt
 npm ci
 # Start the server
 npm start

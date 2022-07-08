@@ -122,3 +122,4 @@ dist
 *.db
 
 *.png
+venv/
