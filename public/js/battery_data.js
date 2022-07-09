@@ -24,25 +24,34 @@ socket.on('battery_data', function (data) {
 
         let unix_timestamp = data.d.time;
         let date = new Date(unix_timestamp);
+        let years = date.getFullYear();
+        let months = "0" + date.getMonth();
+        let days = "0" + date.getDate();
         let hours = "0" + date.getHours();
         let minutes = "0" + date.getMinutes();
         let seconds = "0" + date.getSeconds();
-
-        document.getElementById("bat_time").innerHTML = hours.substring(hours.length - 2) + ":" + minutes.substring(minutes.length - 2) + ":" + seconds.substring(seconds.length - 2) + " ETC";
+        document.getElementById("bat_time").innerHTML = months.substring(months.length - 2) + "/" + days.substring(days.length - 2) + "/" + years + " - " + hours.substring(hours.length - 2) + ":" + minutes.substring(minutes.length - 2) + ":" + seconds.substring(seconds.length - 2) + " ETC";
     }
 })
 
-setInterval(function () {
+function bat_data() {
     socket.emit('battery_data', {
         op: 5
     })
-}, 5000)
+}
+
+bat_data();
+
+setInterval(bat_data, 5000)
+
 setInterval(function () {
-    // update the clock every second
     let now = new Date();
+    let years = now.getFullYear();
+    let months = "0" + now.getMonth();
+    let days = "0" + now.getDate();
     let hours = "0" + now.getHours();
     let minutes = "0" + now.getMinutes();
     let seconds = "0" + now.getSeconds();
-    document.getElementById("time").innerHTML = hours.substring(hours.length - 2) + ":" + minutes.substring(minutes.length - 2) + ":" + seconds.substring(seconds.length - 2) + " ETC";
+    document.getElementById("time").innerHTML = months.substring(months.length - 2) + "/" + days.substring(days.length - 2) + "/" + years + " - " + hours.substring(hours.length - 2) + ":" + minutes.substring(minutes.length - 2) + ":" + seconds.substring(seconds.length - 2) + " ETC";
 }, 1000);
 

@@ -14,6 +14,11 @@ function db_init() {
                         DATETIME
                     )`);
         })
+        // insert data into the database
+        db.serialize(() => {
+            db.run(`INSERT INTO speed (speed, time)
+                    VALUES (?, ?)`, [0, new Date()]);
+        })
         db.close();
     } catch (err) {
         console.log(err);

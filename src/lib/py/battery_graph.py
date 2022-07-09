@@ -62,5 +62,5 @@ ab.set_ylabel('Voltage (V)', labelpad=10)
 
 plt.tight_layout()
 plt.savefig('public/images/battery_graph.png')
-print("Battery graph created")
+# print("Battery graph created")
 plt.close()
