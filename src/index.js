@@ -1,5 +1,7 @@
 const express = require('express'); // using express
 const socketIO = require('socket.io');
+const {add_user, make_token} = require('./lib/js/auth')
+const bodyParser = require('body-parser')
 const http = require('http')
 const port = process.env.PORT || 8080 // setting the port
 let app = express();
@@ -8,6 +10,7 @@ let {battery_handler, db_init_battery} = require('./lib/js/battery');
 let {speed_handler, db_init_speed} = require('./lib/js/speed');
 let server = http.createServer(app);
 app.use(express.static('public')) // using the public folder
+app.use(bodyParser.json())
 let io = socketIO(server); // using socket.io
 db_init_battery();
 db_init_speed()
@@ -33,6 +36,17 @@ app.get('/', (req, res) => {
 app.get('/battery', (req, res) => {
     res.sendFile(__dirname + '/assets/html/battery.html')
     console.log("request received")
+})
+
+app.get('/battery/gauge', (req, res) => {
+    res.sendFile(__dirname + '/assets/html/battery_gauge.html')
+    console.log("request received")
+})
+
+app.get('/new_token', (req, res) => {
+    let token = make_token(70);
+    add_user(token);
+    res.send(token);
 })
 
 

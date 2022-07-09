@@ -36,7 +36,30 @@ function battery(socket) {
                             VALUES (?, ?, ?)`, [battery_temp, battery_voltage, battery_time]);
                 })
                 socket.emit('battery_data', {op: 3, t: 'success'});
-            } else if (data.op !== 1) {
+            } else if (data.op === 5) {
+                // send the current speed to the client with op code 6
+                db.serialize(() => {
+                    db.get(`SELECT *
+                            FROM battery
+                            ORDER BY battery_time DESC
+                            LIMIT 1`, (err, row) => {
+                            if (err) {
+                                console.log(err);
+                            } else {
+                                socket.emit('battery_data', {
+                                    op: 6,
+                                    d: {
+                                        'temp': row['battery_temp'],
+                                        'voltage': row['battery_voltage'],
+                                        'time': row['battery_time']
+                                    },
+                                    t: 'success'
+                                });
+                            }
+                        }
+                    );
+                })
+            } else if (data.op !== 1 && data.op !== 5) {
                 console.log("invalid operation");
                 socket.emit('battery_data', {
                     op: 2,

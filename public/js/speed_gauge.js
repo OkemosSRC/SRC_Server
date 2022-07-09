@@ -7,8 +7,8 @@ var opts = {
         strokeWidth: 0.035, // The thickness
         color: '#000000' // Fill color
     },
-    limitMax: false,     // If false, max value increases automatically if value > maxValue
-    limitMin: false,     // If true, the min value of the gauge will be fixed
+    limitMax: true,     // If false, max value increases automatically if value > maxValue
+    limitMin: true,     // If true, the min value of the gauge will be fixed
     colorStart: '#ffffff',   // Colors
     colorStop: '#ffffff',    // just experiment with them
     strokeColor: '#ffffff',  // to see which ones work best for you
@@ -39,15 +39,7 @@ var opts = {
 var target = document.getElementById('speed'); // your canvas element
 var gauge = new Gauge(target).setOptions(opts); // create sexy gauge!
 gauge.maxValue = 100; // set max gauge value
+gauge.minValue = 0;
 gauge.setMinValue(0);  // Prefer setter over gauge.minValue = 0
 gauge.animationSpeed = 5; // set animation speed (32 is default value)
 gauge.set(0)
-/*
-setInterval(function () {
-    // get random value between 0 and 70
-    var value = Math.floor(Math.random() * 100);
-    gauge.set(value); // set actual value
-    document.getElementById("speed_val").innerHTML = value+" MPH";
-}, 500);
-
- */
