@@ -20,9 +20,7 @@ var opts_v = {
         color: "#000000",  // Optional: Label text color
         fractionDigits: 0  // Optional: Numerical precision. 0=round off.
     },
-    percentColors: [
-        [0.0, "#ff0000"], [0.5, "#f9c802"], [0.6, "#a9d70b"], [0.8, "#f9c802"], [1.0, "#ff0000"]
-    ],
+    percentColors: [[0.0, "#ff0000"], [0.5, "#f9c802"], [0.6, "#a9d70b"], [0.8, "#f9c802"], [1.0, "#ff0000"]],
     renderTicks: {
         divisions: 10,
         divWidth: 1,
@@ -32,10 +30,9 @@ var opts_v = {
         subWidth: 1,
         subLength: 0.5,
         subColor: "#666666"
-
     }
-
 };
+
 
 var opts_t = {
     angle: 0.15, // The span of the gauge arc
@@ -59,9 +56,7 @@ var opts_t = {
         color: "#000000",  // Optional: Label text color
         fractionDigits: 0  // Optional: Numerical precision. 0=round off.
     },
-    percentColors: [
-        [0.0, "#ff0000"], [0.52, "#f9c802"], [0.62, "#a9d70b"], [0.72, "#f9c802"], [1.0, "#ff0000"]
-    ],
+    percentColors: [[0.0, "#ff0000"], [0.52, "#f9c802"], [0.62, "#a9d70b"], [0.72, "#f9c802"], [1.0, "#ff0000"]],
     renderTicks: {
         divisions: 10,
         divWidth: 1,
@@ -71,9 +66,7 @@ var opts_t = {
         subWidth: 1,
         subLength: 0.5,
         subColor: "#666666"
-
     }
-
 };
 
 
@@ -84,11 +77,10 @@ voltage_gauge.setMinValue(0);  // Prefer setter over gauge.minValue = 0
 voltage_gauge.animationSpeed = 5; // set animation speed (32 is default value)
 voltage_gauge.set(0)
 
+
 var target_t = document.getElementById('battery_temp'); // your canvas element
 var temp_gauge = new Gauge(target_t).setOptions(opts_t); // create sexy gauge!
 temp_gauge.maxValue = 120; // set max gauge value
 temp_gauge.setMinValue(0);  // Prefer setter over gauge.minValue = 0
 temp_gauge.animationSpeed = 5; // set animation speed (32 is default value)
 temp_gauge.set(0)
-
-

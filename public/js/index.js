@@ -1,3 +1,24 @@
+/**
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ * You should have received a copy of the GNU General Public License
+ * along with this program.  If not, see <https://www.gnu.org/licenses/>.
+ *
+ * @author MatchaOnMuffins
+ * @version 1.0
+ * @date July 2022
+ * @license GNU GPLv3
+ * @organization OkemosSRC
+ * @copyright 2020 MatchaOnMuffins
+ **/
+
+
 let socket = io()
 
 
@@ -40,7 +61,7 @@ socket.on('battery_data', function (data) {
     }
 })
 
-function current_time() {
+async function current_time() {
     // update the clock every second
     let now = new Date();
     let years = now.getFullYear();
@@ -52,28 +73,23 @@ function current_time() {
     document.getElementById("current_time").innerHTML = months.substring(months.length - 2) + "/" + days.substring(days.length - 2) + "/" + years + " - " + hours.substring(hours.length - 2) + ":" + minutes.substring(minutes.length - 2) + ":" + seconds.substring(seconds.length - 2) + " ETC";
 }
 
-function bat_data() {
+async function bat_data() {
     socket.emit('battery_data', {
         op: 5
     })
 }
 
-function spd_data() {
+async function spd_data() {
     socket.emit('speed_data', {
         op: 5
     })
 }
 
+// execute the functions for the first time when the page loads
 bat_data();
 spd_data();
+current_time();
 
 
 setInterval(current_time, 1000);
-
-
-setInterval(spd_data, 5000)
-
-
-setInterval(bat_data, 5000)
-
 
