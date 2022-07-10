@@ -31,6 +31,7 @@ const port = process.env.PORT || 8080 // setting the port
 const {battery_graph} = require('./lib/js/graphs');
 const {battery_handler, db_init_battery} = require('./lib/js/battery');
 const {speed_handler, db_init_speed} = require('./lib/js/speed');
+const NODE_ENV = process.env.NODE_ENV;
 
 
 // Initializing express
@@ -82,14 +83,19 @@ app.get('/battery/gauge', (req, res) => {
 
 
 app.get('/new_token', (req, res) => {
-    let token = make_token(70);
-    add_user(token);
-    res.send(token);
+    // if in development mode, generate a new token
+    if (NODE_ENV === 'development') {
+        let token = make_token(70);
+        add_user(token);
+        res.send(token);
+    } else {
+        res.status(403).send('This feature is not available in production mode');
+    }
 });
 
 
 // For security reasons, will only work on localhost or Cloudflare Ardo Tunnel
-server.listen(port, "localhost",() => {
+server.listen(port, "localhost", () => {
     console.log(chalk.bgBlackBright(`Server is running on port ${port}`));
     console.log(`URL: http://localhost:${port}`);
 });
