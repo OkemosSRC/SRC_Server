@@ -106,9 +106,9 @@ function battery(socket) {
                         }
                         if (!row) {
                             // console.log("no data");
-                            socket.emit('speed_data', {
+                            socket.emit('battery_data', {
                                 op: 6, d: {
-                                    'speed': -1, 'time': new Date()
+                                    'temp': null, 'voltage': null, 'time': 0
                                 }, t: 'success'
                             });
                         } else {

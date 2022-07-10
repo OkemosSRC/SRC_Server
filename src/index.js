@@ -96,6 +96,6 @@ app.get('/new_token', (req, res) => {
 
 // For security reasons, will only work on localhost or Cloudflare Ardo Tunnel
 server.listen(port, "localhost", () => {
-    console.log(chalk.bgBlackBright(`Server is running on port ${port}`));
-    console.log(`URL: http://localhost:${port}`);
+    console.info(chalk.bgBlackBright(`Server is running on port ${port}`));
+    console.info(`URL: http://localhost:${port}`);
 });

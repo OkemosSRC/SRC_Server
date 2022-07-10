@@ -47,7 +47,7 @@ socket.on('battery_data', function (data) {
         let unix_timestamp = data.d.time;
         let date = new Date(unix_timestamp);
         let years = date.getFullYear();
-        let months = "0" + date.getMonth();
+        let months = "0" + (date.getMonth()+1); // +1 because January is 0
         let days = "0" + date.getDate();
         let hours = "0" + date.getHours();
         let minutes = "0" + date.getMinutes();
@@ -67,7 +67,7 @@ async function bat_data() {
 async function current_time() {
     let now = new Date();
     let years = now.getFullYear();
-    let months = "0" + now.getMonth();
+    let months = "0" + (now.getMonth()+1); // +1 because January is 0
     let days = "0" + now.getDate();
     let hours = "0" + now.getHours();
     let minutes = "0" + now.getMinutes();

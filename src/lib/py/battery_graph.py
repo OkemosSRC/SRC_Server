@@ -35,7 +35,7 @@ one_hour_ago = int(one_hour_ago.timestamp() * 1000)
 c.execute(f"SELECT `battery_time`,`battery_temp`,`battery_voltage` FROM battery WHERE `battery_time` > {one_hour_ago}")
 srs_bat = c.fetchall()
 if len(srs_bat) == 0:
-    print('no data')
+    # print('no data')
     time_sample = [datetime.fromtimestamp(round(int(one_hour_ago) / 1000))]
     temp_sample = [1]
     voltage_sample = [1]

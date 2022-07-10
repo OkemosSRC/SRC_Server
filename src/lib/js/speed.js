@@ -31,9 +31,9 @@ function db_init() {
             db.run(`CREATE TABLE IF NOT EXISTS speed
                     (
                         speed
-                        FLOAT,
+                            FLOAT,
                         time
-                        DATETIME
+                            DATETIME
                     )`, (err) => {
                 if (err) {
                     console.error(err);
@@ -103,7 +103,8 @@ function speed(socket) {
                 db.serialize(() => {
                     db.get(`SELECT *
                             FROM speed
-                            ORDER BY time DESC LIMIT 1`, (err, row) => {
+                            ORDER BY time DESC
+                            LIMIT 1`, (err, row) => {
                         if (err) {
                             console.error(err);
                         }
@@ -111,7 +112,7 @@ function speed(socket) {
                             // console.log("no data");
                             socket.emit('speed_data', {
                                 op: 6, d: {
-                                    'speed': -1, 'time': new Date()
+                                    'speed': NaN, 'time': 0
                                 }, t: 'success'
                             });
                         } else {
