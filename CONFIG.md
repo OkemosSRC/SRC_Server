@@ -18,7 +18,7 @@
 | 4       | `failed`          | Battery info submit failed  | Server |
 | 5       | `get`             | get battery info            | Client |
 | 6       | `current_battery` | Current battery info        | Server |
-| 7       | `unauthorized`    | Battery info                | Server |
+| 7       | `unauthorized`    | Action unauthorized         | Server |
 
 ### EVENT `speed_data`
 
@@ -30,4 +30,4 @@
 | 4       | `fail`          | Speed info submit failed  | Server |
 | 5       | `get`           | get speed info            | Client |
 | 6       | `current_speed` | Current speed info        | Server |
-| 7       | `unauthorized`  | Battery info              | Server |
+| 7       | `unauthorized`  | Action unauthorized       | Server |
